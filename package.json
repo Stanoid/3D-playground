@@ -1,0 +1,16 @@
+{
+  "name": "stanoid",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node --experimental-worker ./main.js",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.4.4"
+  },
+  "dependencies": {
+    "three": "^0.130.1"
+  }
+}
