@@ -20,8 +20,16 @@ camera.position.setZ(2);
 renderer.render(scene,camera);
 
 const geometry = new THREE.OctahedronGeometry(1,0);
-const material = new THREE.MeshPhysicalMaterial({color: 0x324453});
-const torus = new THREE.Mesh(geometry,material);
+const spaceTexture = new THREE.TextureLoader().load('lgo.png');
+
+spaceTexture.wrapS = THREE.RepeatWrapping;
+spaceTexture.wrapT = THREE.RepeatWrapping;
+spaceTexture.repeat.set( 1, 1 );
+
+var material = new THREE.PointsMaterial({color: 0xFFFFFF,map: spaceTexture});
+
+var torus = new THREE.Points(geometry, material);
+// const torus = new THREE.Mesh(geometry,material);
 
 
 scene.add(torus);
@@ -34,7 +42,7 @@ pointlight.rotation.x= 10;
 
 const pointhelp = new THREE.PointLightHelper(pointlight);
 const grid = new THREE.GridHelper(200,500);
-scene.add(pointhelp);
+// scene.add(pointhelp);
 
 scene.add(pointlight,amblight);
 
@@ -65,7 +73,7 @@ function animate(){
 requestAnimationFrame(animate);
 
 
-torus.rotation.y += 0.01;
+//torus.rotation.y += 0.01;
 
 control.update();
 
